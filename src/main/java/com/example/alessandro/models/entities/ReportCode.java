@@ -1,58 +1,48 @@
 package com.example.alessandro.models.entities;
 
+import com.example.alessandro.models.DTO.ReportCodeDTO;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-/*
-@Entity(name = "reportcodes")*/
+
+@Entity(name = "reportcodes")
+@Data
+@NoArgsConstructor
 public class ReportCode {
-/*
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String key;
-/*
-    @ElementCollection*/
-    private List<String> value;
+    private String identifier;
 
-    public ReportCode(){}
+    private List<String> valore;
 
-    public ReportCode(String key, List<String> value){
-        this.key = key;/*
-        this.value = value;*/
+    public ReportCode(String identifier, List<String> valore){
+        this.identifier = identifier;
+        this.valore = valore;
     }
 
-    public long getId() {
-        return id;
+    public ReportCodeDTO map(){
+        return new ReportCodeDTO(
+                this.id,
+                this.identifier,
+                this.valore
+        );
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public String getKey() {
-        return key;
-    }
 
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public List<String> getValue() {
-        return value;
-    }
-
-    public void setValue(List<String> value) {
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return "ReportCode{" +
-                "id=" + id +
-                ", key='" + key + '\'' +
-                ", value=" + value +
-                '}';
-    }
 }
+
+
+/*
+lombok dependency
+@data --- getter and setter
+@noargsconstructor -- constructor base
+
+
+REcord annotation
+public record entityWithRecord --- tutto*/

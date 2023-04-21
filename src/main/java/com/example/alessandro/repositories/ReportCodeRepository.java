@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-/*@Repository
+@Repository
 public interface ReportCodeRepository extends JpaRepository<ReportCode, Long>, JpaSpecificationExecutor<ReportCode> {
 
-    public Optional<ReportCode> findReportCodeByKey(String key);
+    public Optional<ReportCode> findReportCodeByIdentifier(String identifier);
 
-}*/
+}
